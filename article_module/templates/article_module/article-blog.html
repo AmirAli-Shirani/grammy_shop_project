@@ -1,0 +1,109 @@
+{% extends 'shared/master.html' %}
+{% block header_references %}
+    <link rel="stylesheet" href="/static/css/custom.css">
+{% endblock %}
+{% block title %}
+    مقالات
+{% endblock %}
+{% block content %}
+    <section class="page_header">
+        <!-- CONTAINER -->
+        <div class="container">
+            <h3 class="pull-left"><b>مقالات</b></h3>
+
+            <div class="pull-right">
+                <a href="{% url 'home_page' %}">بازگشت به صفحه اصلی<i class="fa fa-angle-right"></i></a>
+            </div>
+        </div><!-- //CONTAINER -->
+    </section>
+    <section class="articles_block">
+        <!-- CONTAINER -->
+        <div class="container">
+            <!-- ROW -->
+            <div class="row">
+                <!-- ARTICLES LIST -->
+                <div class="articles_list clearfix">
+                    <article class="article_item article_large col-lg-12 col-md-12 clearfix margbot30">
+                        <a class="article_image" href="article-single.html">
+                            <div class="article_date">15<span>oct</span></div>
+                            <img src="/static/images/articles/large.jpg" alt="">
+                        </a>
+                        <a class="article_title text-decoration-none text-dark" href="article-single.html">لورم ایپسوم
+                            متن ساختگی
+                            با</a>
+                        <div class="article_content">
+                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک
+                                است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط
+                                فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد،
+                                کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می
+                                طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و
+                                فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و دشواری
+                                موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی
+                                دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار
+                                گیرد.</p>
+                            <p>
+                                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک
+                                است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط
+                                فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد،
+                                کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می
+                                طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و
+                                فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و دشواری
+                                موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی
+                                دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار
+                                گیرد.
+                            </p>
+                        </div>
+                        <ul class="post_meta">
+                            <li><i class="fa fa-user"></i><a href="javascript:void(0);" class="text-decoration-none"> امیرعلی شیرانی</a></li>
+                            <li><i class="fa fa-comments"></i>کامنت <span class="sep">|</span> 15</li>
+                            <li><i class="fa fa-eye"></i>بازدید <span class="sep">|</span> 259</li>
+                        </ul>
+                    </article>
+
+                    <div class="respond_clear_768"></div>
+                    {% for article in articles %}
+                        <article
+                                class="article_item col-lg-4 col-md-4 col-sm-4 col-xs-6 col-ss-12 clearfix margbot30">
+                            <a class="article_image" href="{% url 'article_detail_page' pk=article.id %}">
+                                <div class="article_date">30<span>oct</span></div>
+                                <img src="{{ article.image.url }}" alt="">
+                            </a>
+                            <a class="article_title text-dark text-decoration-none"
+                               href="{% url 'article_detail_page' pk=article.id %}">{{ article.title }}</a>
+                            <ul class="post_meta">
+                                <li><i class="fa fa-user"></i><a href=""
+                                                                 class="text-decoration-none"> {{ article.author }}</a>
+                                </li>
+                                <li><i class="fa fa-eye"></i>بازدید <span class="sep">|</span> 259</li>
+                            </ul>
+                        </article>
+                    {% endfor %}
+
+                </div><!-- //ARTICLES LIST -->
+            </div><!-- //ROW -->
+
+            <hr>
+
+            <!-- PAGINATION -->
+            <div class="clearfix py-3">
+                <!-- PAGINATION -->
+                <ul class="pagination">
+                    {% if page_obj.has_previous %}
+                        <li><a href="?page={{ page_obj.previous_page_number }}">قبلی</a></li>
+                    {% endif %}
+                    {% for pageNumber in paginator.page_range %}
+                        <li class=" {% if page_obj.number == pageNumber %} active{% endif %}"><a
+                                href="?page={{ pageNumber }}"
+                        >{{ pageNumber }} </a>
+                        </li>
+                    {% endfor %}
+                    {% if page_obj.has_next %}
+                        <li><a href="?page={{ page_obj.next_page_number }}">بعدی </a></li>
+                    {% endif %}
+                </ul><!-- //PAGINATION -->
+            </div>
+
+            <div class="padbot30"></div>
+        </div><!-- //CONTAINER -->
+    </section>
+{% endblock %}

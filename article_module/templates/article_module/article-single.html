@@ -1,0 +1,147 @@
+{% extends 'shared/master.html' %}
+{% load thumbnail %}
+{% block title %}
+
+{% endblock %}
+{% block content %}
+    <section class="page_header">
+        <!-- CONTAINER -->
+        <div class="container">
+            <h3 class="pull-left"><b>مقاله</b></h3>
+            <div class="pull-right">
+                <a href="">بازگشت به صفحه اصلی<i class="fa fa-angle-right"></i></a>
+            </div>
+        </div><!-- //CONTAINER -->
+    </section>
+    <section class="articles_block">
+
+        <!-- CONTAINER -->
+        <div class="container">
+
+            <!-- ARTICLE SINGLE -->
+            <div class="article_single_block clearfix">
+
+                <article class="article_single clearfix">
+
+                    <div class="article_image" href="article-single.html">
+                        <div class="article_date">15<span>oct</span></div>
+                        {% thumbnail article.image "690x550" crop="center" as im %}
+                            <img src="{{ im.url }}" alt="" class="img-fluid img rounded ">
+                        {% endthumbnail %}
+                    </div>
+                    <div class="article_single_caption"><p>{{ article.title }}</p></div>
+                    <div class="clear"></div>
+
+                    <div class="article_single_content">
+                        <h3 class="text-justify px-3">{{ article.short_description }}</h3>
+
+                        <blockquote>
+                            <i>{{ article.blockquote }}</i>
+                        </blockquote>
+                        <div class="clear"></div>
+
+                        <div class="flexslider article_slider">
+                            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                                <ol class="carousel-indicators">
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                                </ol>
+                                <div class="carousel-inner">
+                                    {% for site_slider in article_galleries %}
+                                        <div class="carousel-item {% if forloop.first %}
+    		                                active
+    	                                {% endif %} ">
+                                            <img src="{{ site_slider.image.url }}" class="d-block w-100" alt="...">
+
+                                        </div>
+                                    {% endfor %}
+
+                                </div>
+                                <button class="carousel-control-prev" type="button"
+                                        data-target="#carouselExampleIndicators" data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button"
+                                        data-target="#carouselExampleIndicators" data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است
+                            چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی
+                            تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد</p>
+                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است
+                            چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی
+                            تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد</p>
+                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است
+                            چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی
+                            تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد</p>
+                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است،
+                            چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی
+                            تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی
+                            در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم
+                            افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان
+                            فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و
+                            شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات
+                            پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.</p>
+                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است،
+                            چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی
+                            تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی
+                            در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم
+                            افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان
+                            فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و
+                            شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات
+                            پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.</p>
+                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است،
+                            چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی
+                            تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی
+                            در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم
+                            افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان
+                            فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و
+                            شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات
+                            پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.</p>
+
+                        <ul class="post_meta">
+                            <li><i class="fa fa-user"></i><a href="" class="text-decoration-none">{{ article.author }}</a></li>
+                            <li><i class="fa fa-comments"></i>نظرات<span class="sep">|</span> 15</li>
+                            <li><i class="fa fa-eye"></i>بازدید <span class="sep">|</span> 259</li>
+                        </ul>
+
+                        <div class="shared_tags_block clearfix">
+                            <div class="pull-left post_tags">
+                                {% for category in categories %}
+                                	<a class="text-decoration-none" href="{% url 'products_by_categories' gender=category.gender.url_title category=category.url_title %}">{{ category.title }}</a>
+                                {% endfor %}
+
+                            </div>
+
+                            <div class="pull-right tovar_shared clearfix">
+                                <p>ما را با دوستان خود به اشتراک بگذارید</p>
+                                <ul>
+                                    <li><a class="facebook" href=""><i
+                                            class="fa fa-facebook"></i></a></li>
+                                    <li><a class="twitter" href=""><i class="fa fa-twitter"></i></a>
+                                    </li>
+                                    <li><a class="linkedin" href=""><i
+                                            class="fa fa-linkedin"></i></a></li>
+                                    <li><a class="google-plus" href=""><i
+                                            class="fa fa-google-plus"></i></a></li>
+                                    <li><a class="tumblr" href=""><i class="fa fa-tumblr"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div><!-- //ARTICLE SINGLE -->
+        </div><!-- //CONTAINER -->
+    </section>
+{% endblock %}
+{% block footer_references %}
+    <script src="/static/my_bootstrap/js/jquery-3.7.1.min.js" type="text/javascript"></script>
+    <script src="/static/my_bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+{% endblock %}

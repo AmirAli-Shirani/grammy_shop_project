@@ -1,0 +1,32 @@
+{% extends 'shared/master.html' %}
+{% block title %}
+    فراموشی رمز عبور
+{% endblock %}
+{% block content %}
+    <section class="my_account parallax" style="background-position: 50% 70px;">
+        <!-- CONTAINER -->
+        <div class="container">
+            <div class="my_account_block clearfix">
+                <div class="login">
+                    <h2 class="text-right">فراموشی رمز عبور</h2>
+                    <form class="" action="" method="post">
+                        {% csrf_token %}
+                        <p class="h3 text-right">{{ forget_pass.email.label }}</p>
+                        {{ forget_pass.email }}
+                        <div class="text-danger padbot10 h5 text-right">{{ forget_pass.email.errors }}</div>
+                        <button type="submit" class="btn btn-lg btn-block btn-outline-secondary">فراموشی رمز عبور
+                        </button>
+                    </form>
+                </div>
+                <div class="new_customers">
+                    <h2 class="text-right">: راهنمایی</h2>
+                    <p class="h3 text-justify"> برای بازیابی کلمه عبور خود, ایمیل خود را به دقت وارد کنید; سپس ایمیلی
+                        حاوی
+                        لینک تایید حساب کاربری برای شما ارسال می گردد و از طریق آن به صفحه تغییر کلمه عبور می روید</p>
+                    {#                    <div class="center"><a class="btn active" href="{% url 'reset_password_page'  %}">ثبت نام</a></div>#}
+                </div>
+            </div>
+            <p class="h1 text-center padbot30">سوالی دارید ؟ <b>2828 888 800 1</b></p>
+        </div><!-- //CONTAINER -->
+    </section>
+{% endblock %}

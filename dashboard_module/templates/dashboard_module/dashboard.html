@@ -1,0 +1,17 @@
+{% extends 'shared/master.html' %}
+{% load render_partial %}
+{% block title %}
+    داشبورد
+{% endblock %}
+{% block content %}
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-md-4">
+                {% render_partial 'dashboard_module.views.panel_dashboard' %}
+            </div>
+            <div class="col-md-8 pull-right">
+               <p class="text-right font-weight-bold h3"> this is dashboard</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

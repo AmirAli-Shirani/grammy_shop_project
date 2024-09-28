@@ -1,0 +1,29 @@
+{% load render_partial %}
+{% load static %}
+<html lang="fa-IR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>{% block title %}{% endblock %}</title>
+    {% include 'shared/header-references.html' %}
+    {% block header_references %}{% endblock %}
+</head>
+<body>
+{% include 'shared/site_preloader_header.html' %}
+{% render_partial 'home_module.views.SiteHeaderComponents' %}
+{% block content %}{% endblock %}
+{% include 'shared/site-modal-downside.html' %}
+{% render_partial 'home_module.views.SiteFooterComponents' %}
+{% include 'shared/footer-references.html' %}
+{% block footer_references %}{% endblock %}
+
+{#	<!-- SCRIPTS -->#}
+{#	<!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->#}
+{#    <!--[if IE]><html class="ie" lang="en"> <![endif]-->#}
+{##}
+{% load sweetify %}
+{% sweetify %}
+</body>
+</html>

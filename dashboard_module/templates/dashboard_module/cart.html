@@ -1,0 +1,120 @@
+{% extends 'shared/master.html' %}
+{% load poll_extras %}
+{% load thumbnail %}
+{% block title %}
+    سبد خرید
+{% endblock %}
+{% block content %}
+  <div id="remove_cart_detail">
+    <section class="page_header">
+        <!-- CONTAINER -->
+        <div class="container">
+            <h3 class="pull-left"><b>Shopping bag</b></h3>
+
+            <div class="pull-right">
+                <a href="{% url 'home_page' %}">بازگشت به صفحه اصلی<i class="fa fa-angle-right"></i></a>
+            </div>
+        </div><!-- //CONTAINER -->
+    </section>
+    <section class="shopping_bag_block">
+
+        <!-- CONTAINER -->
+        <div class="container">
+
+            <!-- ROW -->
+            <div class="row">
+
+                <!-- CART TABLE -->
+                <div class="col-lg-9 col-md-9 padbot40">
+
+                    <table class="shop_table">
+                        <thead>
+                        <tr>
+                            <th class="product-thumbnail"></th>
+                            <th class="product-name">محصول</th>
+                            <th class="product-price">قیمت</th>
+                            <th class="product-quantity">تعداد</th>
+                            <th class="product-subtotal">جمعا</th>
+                            <th class="product-remove"></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for detail in cart.cartdetail_set.all %}
+                            <tr class="cart_item">
+                                <td class="product-thumbnail"><a
+                                        href="{% url 'product_detail' slug=detail.product.slug %}">
+                                    {% thumbnail detail.product.image "85x85" crop="center" as im %}
+                                        <img src="{{ im.url }}" alt="" class="rounded py-3">
+                                    {% endthumbnail %}</a>
+                                <td class="product-name">
+                                    <a href="{% url 'product_detail' slug=detail.product.slug %}"
+                                       class="text-decoration-none text-dark">{{ detail.product.title }}</a>
+                                    <ul class="variation">
+                                        <li class="variation-Color">Color: <span>Brown</span></li>
+                                        <li class="variation-Size">Size: <span>XS</span></li>
+                                    </ul>
+                                </td>
+
+                                <td class="product-price">{{ detail.product.price | three_digits_currency }}</td>
+
+                                <td class="product-quantity">
+                                    <div class="fancy-select"><select class="basic fancified"
+                                                                      style="width: 1px; height: 1px; display: block; position: absolute; top: 0px; left: 0px; opacity: 0;">
+                                        <option value="">2</option>
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                    </select>
+                                        <div class="trigger">{{ detail.count }}</div>
+                                    </div>
+                                </td>
+
+                                <td class="product-subtotal">{{ detail.get_total_price | three_digits_currency }}</td>
+
+                                <td class="product-remove"><a onclick="removeProductFromBasket({{ detail.id }})" class="text-decoration-none"><span>حذف</span> <i>X</i></a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+
+                        </tbody>
+                    </table>
+                </div><!-- //CART TABLE -->
+
+
+                <!-- SIDEBAR -->
+                <div id="sidebar" class="col-lg-3 col-md-3 padbot50">
+
+                    <!-- BAG TOTALS -->
+                    <div class="sidepanel widget_bag_totals">
+                        <h3>جمع سبد خرید</h3>
+                        <table class="bag_total">
+                            <tbody>
+                            <tr class="cart-subtotal clearfix">
+                                <th>جمع اجناس</th>
+                                <td>{{ sum | three_digits_currency }}</td>
+                            </tr>
+                            <tr class="shipping clearfix">
+                                <th>حما و نقل</th>
+                                <td>رایگان</td>
+                            </tr>
+                            <tr class="total clearfix">
+                                <th>جمع کل</th>
+                                <td>{{ sum | three_digits_currency }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <form class="coupon_form" action="" method="get">
+                            <input type="text" name="coupon" value="ژتُن دارید؟">
+                            <input type="submit" value="اعمال">
+                        </form>
+                        <a class="btn active" href="">Check out</a>
+                        <a class="btn inactive" href="">Continue shopping</a>
+                    </div><!-- //REGISTRATION FORM -->
+                </div><!-- //SIDEBAR -->
+            </div><!-- //ROW -->
+        </div><!-- //CONTAINER -->
+    </section>
+  </div>
+{% endblock %}

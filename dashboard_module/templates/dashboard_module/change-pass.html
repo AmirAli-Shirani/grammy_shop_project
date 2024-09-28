@@ -1,0 +1,47 @@
+{% extends 'shared/master.html' %}
+{% load render_partial %}
+{% block title %}
+    تغییر کلمه عبور
+{% endblock %}
+{% block content %}
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-4">
+                {% render_partial 'dashboard_module.views.panel_dashboard' %}
+            </div>
+            <div class="col-md-8 pull-right">
+                <section class="my_account parallax" style="background-position: 50% 70px;">
+                    <!-- CONTAINER -->
+                    <div class="container">
+                        <div class="my_account_block clearfix">
+                            <div class="login">
+                                <h2 class="text-right">تغییر کلمه عبور</h2>
+                                <form class="" action="" method="post">
+                                    {% csrf_token %}
+                                    <p class="h3 text-right">{{ change_pass.current_password.label }}</p>
+                                    {{ change_pass.current_password }}
+                                    <div class=" h5 text-right">{{ change_pass.current_password.errors }}
+                                        <p class="h3 text-right">{{ change_pass.password.label }}</p>
+                                        {{ change_pass.password }}
+                                        <div class="text-danger  h5 text-right">{{ change_pass.password.errors }}</div>
+                                    </div>
+                                    <p class="h3 text-right">{{ change_pass.confirm_password.label }}</p>
+                                    {{ change_pass.confirm_password }}
+                                    <div class="text-danger h5  text-right">{{ change_pass.confirm_password.errors }}</div>
+                                    <button type="submit" class="btn btn-lg btn-outline-secondary  btn-block">تغییر کلمه
+                                        عبور
+                                    </button>
+                                </form>
+                            </div>
+                            <div class="new_customers">
+                                <h2 class="h1">: راهنمایی</h2>
+                                <p class="h3 padbot30">کلمه عبور جدید خود را وارد نمایید</p>
+                            </div>
+                        </div>
+                        <p class="h1 text-center padbot30">سوالی دارید ؟ <b>2828 888 800 1</b></p>
+                    </div><!-- //CONTAINER -->
+                </section>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,10 @@
+<div class="sidepanel widget_categories">
+    <h3>دسته بندی محصولات</h3>
+    <ul>
+        {% for shoe in shoes %}
+            <li>
+                <a href="{% url 'products_by_categories' gender=shoe.gender.url_title category=shoe.url_title %}">{{ shoe.title }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>

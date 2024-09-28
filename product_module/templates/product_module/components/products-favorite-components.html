@@ -1,0 +1,22 @@
+{% load poll_extras %}
+<tr class="cart_item">
+    <td class="product-thumbnail"><a href="{{ slug }}"><img
+            src="{{ favorite_product.image.url }}" width="100px" alt=""></a></td>
+    <td class="product-name">
+        <a href="{{ slug }}" class="text-decoration-none text-dark">{{ favorite_product.title }}</a>
+        <ul class="variation">
+            <li class="variation-Color">Color: <span>Brown</span></li>
+            <li class="variation-Size">Size: <span>XS</span></li>
+        </ul>
+    </td>
+
+    <td class="product-price">{{ favorite_product.price | three_digits_currency }}</td>
+
+    <td class="product-add-bag"><a class="add_bag text-decoration-none" href=""><i
+            class="fa fa-shopping-cart"></i><span>افزودن به سبد خرید</span></a></td>
+
+    <td class="product-remove"><a
+            href="{{ url }}" class="text-decoration-none"><span>حدف</span>
+        <i>X</i></a>
+    </td>
+</tr>

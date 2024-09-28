@@ -1,0 +1,64 @@
+.telephone {
+    padding-right: 1.5rem;
+}
+
+.secondary_menu {
+    font-size: 4rem;
+}
+
+.login_label {
+    font-size: 5rem;
+    font-weight: bold;
+}
+
+.button_cart_detail {
+    padding-top: 1.5rem;
+}
+
+.detail_image_btn {
+    padding-right: 7px;
+}
+
+#woman_caltalog_pic {
+    width: 270px;
+    height: 370px;
+}
+
+.contact_us_form div {
+    height: 50px;
+}
+
+#backColor {
+    text-decoration: none;
+    padding: 0 5px;
+    transition: all .9s;
+}
+
+#backColor:hover {
+    color: #fff;
+}
+
+#about_me {
+    width: 700px;
+    height: 400px;
+}
+
+.about_us_picture {
+    height: 300px;
+}
+
+.tovar_view_btn input {
+    display: block;
+    width: 25%;
+    float: none;
+    margin-left: 0;
+    margin-top: 15px;
+}
+
+header a {
+    text-decoration: none;
+}
+
+div.sticky_nav {
+    position: sticky;
+}

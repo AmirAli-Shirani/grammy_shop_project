@@ -1,0 +1,82 @@
+{% extends 'shared/master.html' %}
+{% load thumbnail %}
+{% load poll_extras %}
+{% block title %}
+    {{ product.title }} جزییات محصول |
+{% endblock %}
+{% block header_references %}
+    <link rel="stylesheet" href="/static/css/custom.css">
+{% endblock %}
+{% block content %}
+    <!-- ROW -->
+    {% if product %}
+        {% url 'add_to_favorites' pk=product.pk as myUrl %}
+        {% url 'product_detail' slug=product.slug as detail %}
+        {% include 'product_module/components/product-detail-components.html' with url=myUrl slug=detail %}
+    {% elif shoes %}
+        {% url 'add_to_favorites' pk=shoes.id as myUrl %}
+        {% url 'shoes_detail_page' slug=shoes.slug as detail %}
+        {% include 'product_module/components/product-detail-components.html' with product=shoes url=myUrl slug=detail related_products=related_shoes %}
+    {% endif %}
+
+    <!-- BANNER SECTION -->
+    <section class="banner_section">
+        <!-- CONTAINER -->
+        <div class="container">
+            <!-- ROW -->
+            <div class="row">
+                <!-- BANNER WRAPPER -->
+                <div class="banner_wrapper">
+                    <!-- BANNER -->
+                    {% for site_banner in site_banners_detail %}
+                        <div class="col-lg-12 col-md-6">
+                            <a class="banner type4 margbot40" href="{{ site_banner.url }}"><img
+                                    src="{{ site_banner.image.url }}"
+                                    alt=""></a>
+                        </div><!-- //BANNER -->
+                    {% endfor %}
+                </div><!-- //BANNER WRAPPER -->
+            </div><!-- //ROW -->
+        </div><!-- //CONTAINER -->
+    </section><!-- //BANNER SECTION -->
+    <!-- CONTAINER -->
+    <!-- NEW ARRIVALS -->
+    <section class="new_arrivals padbot50">
+        <!-- CONTAINER -->
+        <div class="container">
+            <h2 class="text-center py-4">جدیدترین محصولات</h2>
+            <!-- JCAROUSEL -->
+            <div class="jcarousel-wrapper">
+                <!-- NAVIGATION -->
+                <div class="jCarousel_pagination">
+                    <a href="" class="jcarousel-control-prev" data-jcarouselcontrol="true"><i
+                            class="fa fa-angle-left"></i></a>
+                    <a href="" class="jcarousel-control-next" data-jcarouselcontrol="true"><i
+                            class="fa fa-angle-right"></i></a>
+                </div><!-- //NAVIGATION -->
+
+                <div class="jcarousel animated fadeInUp" data-appear-top-offset="-100" data-animated="fadeInUp"
+                     data-jcarousel="true">
+                    <ul style="left: 0; top: 0;">
+                    {% if product %}
+                    	 {% for latest_product in latest_products %}
+                             {% url 'product_detail' slug=latest_product.slug as detail %}
+                                {% include 'product_module/components/latest-products-components.html' with latest_product=latest_product url=detail %}
+                            {% endfor %}
+                        {% elif shoes %}
+                         {% for latest_shoe in latest_shoes %}
+                             {% url 'shoes_detail_page' slug=latest_shoe.slug as detail %}
+                                {% include 'product_module/components/latest-products-components.html' with latest_product=latest_shoe url=detail %}
+                            {% endfor %}
+                    {% endif %}
+
+
+                    </ul>
+                </div>
+            </div><!-- //JCAROUSEL -->
+        </div><!-- //CONTAINER -->
+    </section><!-- //NEW ARRIVALS -->
+{% endblock %}
+{% block footer_references %}
+    <script src="/static/js/custom.js" type="text/javascript"></script>
+{% endblock %}

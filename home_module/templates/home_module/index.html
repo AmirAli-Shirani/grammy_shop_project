@@ -1,0 +1,213 @@
+{% extends 'shared/master.html' %}
+{% load static %}
+{% load thumbnail %}
+{% load poll_extras %}
+{% block title %}
+    صفحه اصلی | فروشگاه گلامی
+{% endblock %}
+{% block header_references %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+{% endblock %}
+{% block content %}
+    <!-- SCHOOL SALE -->
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            {% for site_slider in site_sliders %}
+                <div class="carousel-item {% if forloop.first %}
+    		active
+    	{% endif %} ">
+                    <img src="{{ site_slider.image.url }}" class="d-block w-100" alt="...">
+                    {#                    {% thumbnail site_slider.image "270x370" crop="center" as im %}#}
+                    {#                        <img src="{{ im.url }}" alt="" class="img-fluid img rounded ">#}
+                    {#                    {% endthumbnail %}#}
+
+                </div>
+            {% endfor %}
+
+        </div>
+        <button class="carousel-control-prev" type="button" data-target="#carouselExampleIndicators" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-target="#carouselExampleIndicators" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </button>
+    </div>
+    <!-- BANNER SECTION -->
+    <section class="banner_section">
+        <!-- CONTAINER -->
+        <div class="container animated fadeInUp" data-appear-top-offset="-100" data-animated="fadeInUp">
+            <!-- ROW -->
+            <div class="row">
+                {#                <div class="top_sale_banners center">#}
+                {% for site_banner in site_banners_upside %}
+                    <div class="col-lg-4 col-md-3 col-sm-3 col-xs-3 col-ss-12 py-5">
+                        <a class="banner nobord margbot30" href="{{ site_banner.url }}">
+                            <img src="{{ site_banner.image.url }}" alt="">
+                        </a>
+                    </div>
+                {% endfor %}
+            </div><!-- //ROW -->
+        </div><!-- //CONTAINER -->
+    </section><!-- //BANNER SECTION -->
+    <!-- NEW ARRIVALS -->
+    <section class="new_arrivals padbot50">
+        <!-- CONTAINER -->
+        <div class="container">
+            <h2 class="text-center py-4">جدیدترین محصولات</h2>
+            <!-- JCAROUSEL -->
+            <div class="jcarousel-wrapper">
+                <!-- NAVIGATION -->
+                <div class="jCarousel_pagination">
+                    <a href="" class="jcarousel-control-prev" data-jcarouselcontrol="true"><i
+                            class="fa fa-angle-left"></i></a>
+                    <a href="" class="jcarousel-control-next" data-jcarouselcontrol="true"><i
+                            class="fa fa-angle-right"></i></a>
+                </div><!-- //NAVIGATION -->
+
+                <div class="jcarousel animated fadeInUp" data-appear-top-offset="-100" data-animated="fadeInUp"
+                     data-jcarousel="true">
+                    <ul style="left: 0; top: 0;">
+                        {% for latest_product in latest_products %}
+                            <li>
+                                <!-- TOVAR -->
+                                <div class="tovar_item_new border rounded">
+                                    <div class="tovar_img">
+                                        {% thumbnail latest_product.image "270x370" crop="center" as im %}
+                                            <img src="{{ im.url }}" alt="" class="img-fluid img rounded ">
+                                        {% endthumbnail %}
+                                        <a class="open-project tovar_view text-decoration-none"
+                                           href="{% url 'product_detail' slug=latest_product.slug %}">جزییات محصول</a>
+                                    </div>
+                                    <div class="tovar_description clearfix">
+                                        <a class="tovar_title px-3 font-weight-bold text-justify text-decoration-none"
+                                           href="{% url 'product_detail' slug=latest_product.slug %}">{{ latest_product.title }}</a>
+                                        <span class="tovar_price p-3  badge-secondary">{{ latest_product.price | three_digits_currency }}</span>
+                                    </div>
+                                </div><!-- //TOVAR -->
+                            </li>
+                        {% endfor %}
+
+                    </ul>
+                </div>
+            </div><!-- //JCAROUSEL -->
+        </div><!-- //CONTAINER -->
+    </section><!-- //NEW ARRIVALS -->
+
+
+    <!-- BANNER SECTION -->
+    <section class="banner_section">
+        <!-- CONTAINER -->
+        <div class="container animated fadeInUp" data-appear-top-offset="-100" data-animated="fadeInUp">
+            <!-- ROW -->
+            <div class="row">
+                <div class="top_sale_banners center">
+                    {% for site_down in site_banners_downside %}
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-5 col-ss-12"><a
+                                class="banner nobord margbot30" href="{{ site_down.url }}"><img
+                                src="{{ site_down.image.url }}" alt=""></a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div><!-- //ROW -->
+        </div><!-- //CONTAINER -->
+    </section><!-- //BANNER SECTION -->
+    <!-- NEW ARRIVALS Shoes -->
+    <section class="new_arrivals padbot50">
+        <!-- CONTAINER -->
+        <div class="container">
+            <h2 class="text-center py-4">پر بازدید ترین محصولات</h2>
+            <!-- JCAROUSEL -->
+            <div class="jcarousel-wrapper">
+                <!-- NAVIGATION -->
+                <div class="jCarousel_pagination">
+                    <a href="" class="jcarousel-control-prev" data-jcarouselcontrol="true"><i
+                            class="fa fa-angle-left"></i></a>
+                    <a href="" class="jcarousel-control-next" data-jcarouselcontrol="true"><i
+                            class="fa fa-angle-right"></i></a>
+                </div><!-- //NAVIGATION -->
+
+                <div class="jcarousel animated fadeInUp" data-appear-top-offset="-100" data-animated="fadeInUp"
+                     data-jcarousel="true">
+                    <ul style="left: 0; top: 0;">
+                        {% for latest_shoe in most_visited_products %}
+                            <li>
+                                <!-- TOVAR -->
+                                <div class="tovar_item_new border rounded">
+                                    <div class="tovar_img">
+                                        {% thumbnail latest_shoe.image "270x370" crop="center" as im %}
+                                            <img src="{{ im.url }}" alt="" class="img-fluid img rounded ">
+                                        {% endthumbnail %}
+                                        <a class="open-project tovar_view text-decoration-none"
+                                           href="{% url 'product_detail' slug=latest_shoe.slug %}">جزییات محصول</a>
+                                    </div>
+                                    <div class="tovar_description clearfix">
+                                        <a class="tovar_title px-3 font-weight-bold text-justify text-decoration-none"
+                                           href="{% url 'product_detail' slug=latest_shoe.slug %}">{{ latest_shoe.title }}</a>
+                                        <span class="tovar_price p-3  badge-secondary">{{ latest_shoe.price | three_digits_currency }}</span>
+                                    </div>
+                                </div><!-- //TOVAR -->
+                            </li>
+                        {% endfor %}
+
+                    </ul>
+                </div>
+            </div><!-- //JCAROUSEL -->
+        </div><!-- //CONTAINER -->
+    </section><!-- //NEW ARRIVALS Shoes -->
+
+
+    <!-- SERVICES SECTION -->
+    <section class="services_section padbot30">
+
+        <!-- CONTAINER -->
+        <div class="container animated fadeInUp" data-appear-top-offset="-100" data-animated="fadeInUp">
+
+            <!-- ROW -->
+            <div class="row">
+
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 col-ss-12 padbot30">
+                    <div class="service_item">
+                        <div class="clearfix"><i class="fa fa-truck"></i>
+                            <p>ارسال رایگان</p></div>
+                        <span>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است</span>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 col-ss-12 padbot30">
+                    <div class="service_item">
+                        <div class="clearfix"><i class="fa fa-gift"></i>
+                            <p>هدایای زیادی</p></div>
+                        <span>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است</span>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 col-ss-12 padbot30">
+                    <div class="service_item">
+                        <div class="clearfix"><i class="fa fa-check-square-o"></i>
+                            <p>کمک در انتخاب</p></div>
+                        <span>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است</span>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 col-ss-12 padbot30">
+                    <div class="service_item">
+                        <div class="clearfix"><i class="fa fa-credit-card"></i>
+                            <p>کارت هدیه رایگان</p></div>
+                        <span>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است</span>
+                    </div>
+                </div>
+            </div><!-- //ROW -->
+        </div><!-- //CONTAINER -->
+    </section><!-- //SERVICES SECTION -->
+{% endblock %}
+{% block footer_references %}
+    <script src="/static/my_bootstrap/js/jquery-3.7.1.min.js" type="text/javascript"></script>
+    <script src="/static/my_bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+{% endblock %}

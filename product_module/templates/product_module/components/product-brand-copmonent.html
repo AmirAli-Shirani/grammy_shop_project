@@ -1,0 +1,12 @@
+<div class="sidepanel widget_categories">
+    <h3>برند های محصولات</h3>
+    <ul>
+        {% for brand in brands %}
+            <li>
+                <a href="{% url 'product_by_brands'  brand=brand.slug %}" class="{% if forloop.first %}
+            	active
+            {% endif %} text-decoration-none ">{{ brand.title }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>

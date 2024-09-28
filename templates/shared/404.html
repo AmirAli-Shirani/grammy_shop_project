@@ -1,0 +1,18 @@
+{% extends 'shared/master.html' %}
+{% block title %}
+    ارور 404
+{% endblock %}
+{% block content %}
+    <section class="page404 parallax" style="background-position: 50% 0px; min-height: 371px;">
+
+        <!-- CONTAINER -->
+        <div class="container">
+            <div class="wrapper404" style="padding-top: 43.5px;">
+                <h1>404</h1>
+                <h2>ERROR</h2>
+                <p>صفحه مورد نظر شما وجود ندارد. بازگشت به صفحه اصلی</p>
+                <a class="btn btn-white" href="{% url 'home_page' %}">بازگشت به خانه</a>
+            </div>
+        </div><!-- //CONTAINER -->
+    </section>
+{% endblock %}

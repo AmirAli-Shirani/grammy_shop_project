@@ -1,0 +1,173 @@
+{% load thumbnail %}
+{% load poll_extras %}
+<!-- TOVAR DETAILS -->
+<section class="tovar_details padbot70">
+    <!-- CONTAINER -->
+    <div class="container">
+        <div class="row">
+            <!-- SIDEBAR TOVAR DETAILS -->
+            <div class="col-lg-3 col-md-3 sidebar_tovar_details">
+                <h3><b>برند های مرتبط</b></h3>
+                <ul class="tovar_items_small clearfix">
+                    {% for related_product in related_products %}
+                        <li class="clearfix">
+                            <a href="{{ related_product.slug }}"> <img
+                                    class="tovar_item_small_img " src="{{ related_product.image.url }}"
+                                    alt=""></a>
+                            <a href="{{ related_product.slug }}"
+                               class="tovar_item_small_title text-decoration-none">{{ related_product.title }}</a>
+                            <span class="tovar_item_small_price">{{ related_product.price | three_digits_currency }}</span>
+                        </li>
+                    {% endfor %}
+
+                </ul>
+            </div><!-- //SIDEBAR TOVAR DETAILS -->
+
+            <!-- TOVAR DETAILS WRAPPER -->
+
+            <div class="col-lg-9 col-md-9 tovar_details_wrapper clearfix">
+                <div class="tovar_details_header clearfix margbot35">
+                    <h3 class="pull-left"><b>Sweaters</b></h3>
+
+                    <div class="tovar_details_pagination pull-right">
+                        <a class="fa fa-angle-left" href=""></a>
+                        <span>2 of 34</span>
+                        <a class="fa fa-angle-right" href=""></a>
+                    </div>
+                </div>
+
+                <!-- CLEARFIX -->
+                {% thumbnail product.image "420x507" as im %}
+                    <img src="{{ im.url }}" alt="" class="rounded py-3">
+                {% endthumbnail %}
+                <div class="tovar_view_description">
+                    <div class="tovar_view_title">{{ product.title }}</div>
+                    <div class="tovar_article py-3 font-weight-bold h5">کد محصول : {{ product.id }}</div>
+                    <div class="clearfix tovar_brend_price">
+                        <div class="pull-left tovar_brend">برند : {{ product.brand }}</div>
+                        <div class="pull-right tovar_view_price">{{ product.price | three_digits_currency }} </div>
+                    </div>
+                    <div class="tovar_color_select">
+                        <p>انتخاب رنگ</p>
+                        <a class="color1" href=""></a>
+                        <a class="color2 active" href=""></a>
+                        <a class="color3" href=""></a>
+                        <a class="color4" href=""></a>
+                    </div>
+                    <div class="tovar_size_select">
+                        <div class="clearfix">
+                            <p class="pull-left">انتخاب سایز</p>
+                            <span>Size &amp; Fit</span>
+                        </div>
+                        <a class="sizeXS" href="">XS</a>
+                        <a class="sizeS active" href="">S</a>
+                        <a class="sizeM" href="">M</a>
+                        <a class="sizeL" href="">L</a>
+                        <a class="sizeXL" href="">XL</a>
+                        <a class="sizeXXL" href="">XXL</a>
+                        <a class="sizeXXXL" href="">XXXL</a>
+                    </div>
+                    <div class="tovar_view_btn">
+                        <div class="fancy-select"><select class="basic fancified"
+                                                          style="width: 1px; height: 1px; display: block; position: absolute; top: 0; left: 0; opacity: 0;">
+                            <option value="">QTY</option>
+                            <option>Lo</option>
+                            <option>Ips</option>
+                            <option>Dol</option>
+                            <option>Sit</option>
+                            <option>Amet</option>
+                        </select>
+                            <div class="trigger">QTY</div>
+                            <ul class="options">
+                                <li data-raw-value="Lo">Lo</li>
+                                <li data-raw-value="Ips">Ips</li>
+                                <li data-raw-value="Dol">Dol</li>
+                                <li data-raw-value="Sit">Sit</li>
+                                <li data-raw-value="Amet">Amet</li>
+                            </ul>
+                        </div>
+                        <a class="add_bag text-decoration-none" href=""><i class="fa fa-shopping-cart"></i>افزودن به سبد
+                            خرید</a>
+
+                        {% if not is_favorite %}
+                            <a class="add_lovelist" href="{{ url }}"><i
+                                    class="fa fa-heart py-4"></i></a>
+                        {% endif %}
+                    </div>
+                    <div class="tovar_shared clearfix">
+                        <p>ما رو با دوستان خود به اشتراک بگذارید</p>
+                        <ul>
+                            <li><a class="facebook" href=""><i class="fa fa-facebook"></i></a></li>
+                            <li><a class="twitter" href=""><i class="fa fa-twitter"></i></a></li>
+                            <li><a class="linkedin" href=""><i class="fa fa-linkedin"></i></a></li>
+                            <li><a class="google-plus" href=""><i class="fa fa-google-plus"></i></a>
+                            </li>
+                            <li><a class="tumblr" href=""><i class="fa fa-tumblr"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div><!-- //CLEARFIX -->
+            <!-- TOVAR INFORMATION -->
+            <div class="tovar_information">
+                <ul class="tabs clearfix ">
+                    <li class="">جزییات محصول</li>
+                    <li class="">مشخصات</li>
+                    <li class="current">نظرات ({{ comments.count }})</li>
+                </ul>
+                <div class="box visible" style="display: none;">
+                    <p>{{ product.short_description }}</p>
+                </div>
+                <div class="box" style="display: none;">
+                    <p>{{ product.description }}</p>
+                </div>
+                <div class="box align-items-end" style="display: block;">
+                    <ul class="comments">
+                        {% for comment in comments %}
+                            <li class="text-right">
+                                <div class="clearfix">
+                                    <p class="pull-right font-weight-bold">
+                                        <strong>{{ comment.user }}</strong>
+                                    </p>
+                                    <span class="date pull-right px-3">{{ comment.create_date }}</span>
+                                    <div class="pull-right rating-box clearfix">
+                                    </div>
+                                </div>
+                                <p class="py-3 font-weight-bold py-3 px-4">{{ comment.text }}</p>
+
+                                <ul>
+                                    {% for answer in comment.productcomment_set.all %}
+                                        <li>
+                                            <p><strong
+                                                    class="font-weight-bold">{{ answer.user }}</strong>
+                                            </p>
+                                            <p class="font-weight-bold py-2 px-4">{{ answer.text }}</p>
+                                        </li>
+                                    {% endfor %}
+
+                                </ul>
+                            </li>
+                        {% endfor %}
+
+                    </ul>
+
+                    <h3 class="text-right">نظر خود را درج کنید</h3>
+                    <p class="text-right">اکنون لطفاً یک نظز (کوتاه) بنویسید .... (حداقل 20،
+                        حداکثر 2000
+                        نویسه)</p>
+                    <div class="clearfix">
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            <textarea name="" id="" cols="30" rows="10"></textarea>
+                            {#                                            {{ form.text }}#}
+                            <a class="btn btn-secondary btn-block btn-default py-3"
+                               href="">ثبت
+                                نظر
+                            </a>
+                            ثبت نظر
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div><!-- //TOVAR DETAILS WRAPPER -->
+    </div><!-- //ROW -->
+</section><!-- //TOVAR DETAILS -->

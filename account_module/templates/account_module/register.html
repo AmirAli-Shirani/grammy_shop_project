@@ -1,0 +1,49 @@
+{% extends 'shared/master.html' %}
+{% block title %}
+    ثبت نام
+{% endblock %}
+{% block content %}
+    <section class="my_account parallax" style="background-position: 50% 70px;">
+        <!-- CONTAINER -->
+        <div class="container">
+            <div class="my_account_block clearfix">
+                <div class="login">
+                    <h2 class="text-right">ثبت نام</h2>
+                    <form class="" action="" method="post">
+                        {% csrf_token %}
+                        <p class="h3 text-right">{{ register_form.first_name.label }}</p>
+                        {{ register_form.first_name }}
+                        <div class="text-danger padbot10 h5 text-right">{{ register_form.first_name.errors }}</div>
+                        <p class="h3 text-right">{{ register_form.last_name.label }}</p>
+                        {{ register_form.last_name }}
+                        <div class="text-danger padbot10 h5 text-right">{{ register_form.last_name.errors }}</div>
+                        <p class="h3 text-right">{{ register_form.email.label }}</p>
+                        {{ register_form.email }}
+                        <div class="text-danger padbot10 h5 text-right">{{ register_form.email.errors }}</div>
+                        <p class="h3 text-right">{{ register_form.password.label }}</p>
+                        {{ register_form.password }}
+                        <div class="text-danger padbot10 h5 text-right">{{ register_form.password.errors }}
+                        </div>
+                        <p class="h3 text-right">{{ register_form.confirm_password.label }}</p>
+                        {{ register_form.confirm_password }}
+                        <div class="text-danger h5 padbot10 text-right">{{ register_form.confirm_password.errors }}</div>
+                        <p class="pull-right padbot10"><a href="{% url 'login_page' %}">قبلا ثبت نام کرده اید؟</a></p>
+                        <button type="submit" class="btn btn-lg btn-block btn-outline-secondary">ثبت نام</button>
+                    </form>
+                </div>
+                <div class="new_customers">
+                    <h2>مشتریان جدید</h2>
+                    <p class="h4 padbot30">— با فروشگاه گلامی ثبت نام کنید تا از خدمات شخصی سازی شده لذت ببرید، از جمله
+                        :</p>
+                    <p class="h4 padbot30">— وضعیت سفارش آنلاین</p>
+                    <p class="h4 padbot30">— علاقه مندی ها</p>
+                    <p class="h4 padbot30">— برای دریافت اخبار اختصاصی و فروش خصوصی ثبت نام کنید</p>
+                    <p class="h4 padbot30">— ثبت سفارشات تستی</p>
+                    <p class="h4 padbot30"> — تسویه حساب سریع و آسان</p>
+                    {#                    <div class="center"><a class="btn active" href="{% url 'register_page' %}">ثبت نام</a></div>#}
+                </div>
+            </div>
+            <p class="h1 text-center padbot30">سوالی دارید ؟ <b>2828 888 800 1</b></p>
+        </div><!-- //CONTAINER -->
+    </section>
+{% endblock %}

@@ -1,0 +1,91 @@
+<!-- HEADER -->
+<header>
+    <!-- TOP INFO -->
+    <div class="top_info">
+        <!-- CONTAINER -->
+        <div class="container clearfix">
+            <ul class="secondary_menu">
+                {% if request.user.is_authenticated %}
+                    <li><a href="{% url 'dashboard_page' %}" class="account-panel text-decoration-none">پنل کاربری</a></li>
+                    <li><a href="{% url 'product_favorites' %}" class="account-panel text-decoration-none">لیست علاقه مندی ها</a></li>
+                    <li><a href="{% url 'login_page' %}" class="account-panel text-decoration-none">ورود</a></li>
+                    <li><a href="{% url 'logout_page' %}" class="account-panel text-decoration-none">خروج</a></li>
+                {% else %}
+                    <li><a href="{% url 'register_page' %}" class="account-register text-decoration-none">ثبت نام</a></li>
+                    <li><a href="{% url 'login_page' %}" class="account-register text-decoration-none">ورود</a></li>
+                {% endif %}
+            </ul>
+            <div class="phone_top">سوالی دارید؟ <a href="" class="pull-left telephone">1 800 888 2828</a></div>
+        </div><!-- //CONTAINER -->
+    </div><!-- TOP INFO -->
+    <!-- MENU BLOCK -->
+    <div id="undefined-sticky-wrapper" class="sticky-wrapper" style="height: 60px;">
+        <div class="menu_block " style="">
+            <!-- CONTAINER -->
+            <div class="container clearfix"><a href="" class="menu_toggler"><i
+                    class="fa fa-align-justify"></i></a>
+                <!-- LOGO -->
+                <div class="logo">
+                    <a  href="{% url 'home_page' %}"><img src="/static/images/logo.png" alt=""></a>
+                </div><!-- //LOGO -->
+                <!-- MENU -->
+                <ul class="navmenu center">
+                    <li class="sub-menu first {% if request.resolver_match.url_name == 'home_page' %}
+                    	active
+                    {% endif %} "><a class="text-decoration-none" href="{% url 'home_page' %}">صفحه اصلی</a></li>
+                    <li class="sub-menu{% if request.resolver_match.url_name == 'product_catalog_page' %}
+                    	active
+                    {% endif %} "><a class="text-decoration-none" href="{% url 'product_catalog_page' %}">فروشگاه</a></li>
+                    <li class="sub-menu"><a href="" class="text-decoration-none">بانوان</a>
+                        <!-- MEGA MENU -->
+                        <ul class="mega_menu megamenu_col1 clearfix">
+                            <li class="col">
+                                <ol>
+                                    {% for product_category in product_categories_women %}
+                                        <li>
+                                            <a href="{% url 'products_by_categories' gender=product_category.gender.url_title category=product_category.url_title %}"
+                                               class="font-weight-bold text-decoration-none">{{ product_category.title }}</a></li>
+                                    {% endfor %}
+                                </ol>
+                            </li>
+                        </ul><!-- //MEGA MENU -->
+                    </li>
+                    <li class="sub-menu"><a class="text-decoration-none" href="">آقایان</a>
+                        <!-- MEGA MENU -->
+                        <ul class="mega_menu megamenu_col1 clearfix">
+                            <li class="col">
+                                <ol>
+                                    {% for product_categories_man in product_categories_men %}
+                                        <li>
+                                            <a class="text-decoration-none" href="{% url 'products_by_categories' gender=product_categories_man.gender.url_title category=product_categories_man.url_title %}">{{ product_categories_man.title }}</a>
+                                        </li>
+                                    {% endfor %}
+
+                                </ol>
+                            </li>
+                        </ul><!-- //MEGA MENU -->
+                    </li>
+                    <li class="sub-menu"><a href="" class="text-decoration-none">کفش</a>
+                        <!-- MEGA MENU -->
+                        <ul class="mega_menu megamenu_col1 clearfix">
+                            <li class="col">
+                                <ol>
+                                    {% for product_categories_man in shoes_categories %}
+                                        <li>
+                                            <a class="text-decoration-none" href="{% url 'products_by_categories' gender=product_categories_man.gender.url_title category=product_categories_man.url_title %}">{{ product_categories_man.title }}</a>
+                                        </li>
+                                    {% endfor %}
+
+                                </ol>
+                            </li>
+                        </ul><!-- //MEGA MENU -->
+                    </li>
+                    <li><a href="{% url 'contact_us_page' %}" class="text-decoration-none">ارتباط با ما</a></li>
+                    <li><a href="{% url 'about_us_page' %}" class="text-decoration-none">درباره ما</a></li>
+                    <li class="sub-menu"><a href="{% url 'article_page' %}" class="text-decoration-none">مقالات</a></li>
+                </ul> <!-- //MENU -->
+            </div><!-- //MENU BLOCK -->
+        </div>
+    </div><!-- //CONTAINER -->
+</header><!-- //HEADER -->
+<section class="breadcrumb parallax margbot30" style="background-position: 50% 0;"></section>

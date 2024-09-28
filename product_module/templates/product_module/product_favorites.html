@@ -1,0 +1,82 @@
+{% extends 'shared/master.html' %}
+{% block title %}
+    لیست علاقه مندی ها
+{% endblock %}
+{% block content %}
+    <section class="page_header">
+
+        <!-- CONTAINER -->
+        <div class="container">
+            <h3 class="pull-left"><b>لیست علاثه مندی ها</b></h3>
+
+            <div class="pull-right">
+                <a href="">بازگشت به سبد خرید<i class="fa fa-angle-right"></i></a>
+            </div>
+        </div><!-- //CONTAINER -->
+    </section>
+    <section class="love_list_block">
+        <!-- CONTAINER -->
+        <div class="container">
+            <!-- ROW -->
+            <div class="row">
+                <!-- CART TABLE -->
+                <div class="col-lg-9 col-md-9 padbot40">
+                    <table class="shop_table">
+                        <thead>
+                        <tr>
+                            <th class="product-thumbnail"></th>
+                            <th class="product-name">Item</th>
+                            <th class="product-price">Price</th>
+                            <th class="product-add-bag"></th>
+                            <th class="product-remove"></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        	{% for favorite_product in favorite_products %}
+                                {% url 'remove_from_favorites' pk=favorite_product.pk as myUrl %}
+                                {% url 'product_detail' slug=favorite_product.slug as detail  %}
+                                {% include 'product_module/components/products-favorite-components.html' with  url=myUrl slug=detail %}
+                            {% endfor %}
+
+                            {% for fav_product in fav_products %}
+                                {% url 'remove_from_favorites' pk=fav_product.pk as myUrl %}
+                                {% url 'shoes_detail_page' slug=fav_product.slug as detail %}
+                                {% include 'product_module/components/products-favorite-components.html' with favorite_product=fav_product url=myUrl slug=detail %}
+                            {% endfor %}
+
+
+                        </tbody>
+                    </table>
+                </div><!-- //CART TABLE -->
+
+
+                <!-- SIDEBAR -->
+                {#                <div id="sidebar" class="col-lg-3 col-md-3 padbot50">#}
+                {##}
+                {#                    <!-- REGISTRATION FORM -->#}
+                {#                    <div class="sidepanel widget_register_form">#}
+                {#                        <h3>Returning Customer</h3>#}
+                {#                        <p>Sign in to save and share your Love List.</p>#}
+                {#                        <form class="registration_form clearfix" action="javascript:void(0);" method="get">#}
+                {#                            <input type="text" name="text" value="Username or email"#}
+                {#                                   onfocus="if (this.value == 'Username or email') this.value = '';"#}
+                {#                                   onblur="if (this.value == '') this.value = 'Username or email';">#}
+                {#                            <input type="text" name="pass" value="Password"#}
+                {#                                   onfocus="if (this.value == 'Password') this.value = '';"#}
+                {#                                   onblur="if (this.value == '') this.value = 'Password';">#}
+                {#                            <a class="forgot_pass" href="javascript:void(0);">Forgot password?</a>#}
+                {#                            <input type="submit" value="Login">#}
+                {#                        </form>#}
+                {#                    </div><!-- //REGISTRATION FORM -->#}
+                {##}
+                {#                    <!-- CREATE NEW ACCOUNT -->#}
+                {#                    <div class="sidepanel widget_new_account">#}
+                {#                        <h3>New customers</h3>#}
+                {#                        <p>Don't have an account? Register with Glammy Shop to save and share your Love List.</p>#}
+                {#                        <a class="create_acc" href="javascript:void(0);">Create New Account</a>#}
+                {#                    </div><!-- //CREATE NEW ACCOUNT -->#}
+                {#                </div><!-- //SIDEBAR -->#}
+            </div><!-- //ROW -->
+        </div><!-- //CONTAINER -->
+    </section>
+{% endblock %}

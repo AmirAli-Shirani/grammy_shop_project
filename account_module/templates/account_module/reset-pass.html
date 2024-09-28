@@ -1,0 +1,33 @@
+{% extends 'shared/master.html' %}
+{% block title %}
+    تغییر کلمه عبور
+{% endblock %}
+{% block content %}
+    <section class="my_account parallax" style="background-position: 50% 70px;">
+        <!-- CONTAINER -->
+        <div class="container">
+            <div class="my_account_block clearfix">
+                <div class="login">
+                    <h2 class="text-right">تغییر کلمه عبور</h2>
+                    <form class="" action="" method="post">
+                        {% csrf_token %}
+                        <p class="h3 text-right">{{ reset_pass.password.label }}</p>
+                        {{ reset_pass.password }}
+                        <div class="text-danger padbot10 h5 text-right">{{ reset_pass.password.errors }}
+                        </div>
+                        <p class="h3 text-right">{{ reset_pass.confirm_password.label }}</p>
+                        {{ reset_pass.confirm_password }}
+                        <div class="text-danger h5 padbot10 text-right">{{ reset_pass.confirm_password.errors }}</div>
+                        <button type="submit" class="btn btn-lg btn-outline-secondary  btn-block">تغییر کلمه عبور
+                        </button>
+                    </form>
+                </div>
+                <div class="new_customers">
+                    <h2 class="h1">: راهنمایی</h2>
+                    <p class="h3 padbot30">کلمه عبور جدید خود را وارد نمایید</p>
+                </div>
+            </div>
+            <p class="h1 text-center padbot30">سوالی دارید ؟ <b>2828 888 800 1</b></p>
+        </div><!-- //CONTAINER -->
+    </section>
+{% endblock %}

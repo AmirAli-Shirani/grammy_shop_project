@@ -1,0 +1,20 @@
+{% load poll_extras %}
+{% load thumbnail %}
+    <li>
+        <!-- TOVAR -->
+        <div class="tovar_item_new border rounded">
+            <div class="tovar_img">
+                {% thumbnail latest_product.image "270x370" crop="center" as im %}
+                    <img src="{{ im.url }}" alt="" class="img-fluid img rounded ">
+                {% endthumbnail %}
+                <div class=""><a class="open-project tovar_view text-decoration-none"
+                                 href="{{ url }}">جزییات
+                    محصول</a></div>
+            </div>
+            <div class="tovar_description clearfix">
+                <a class="tovar_title px-3 font-weight-bold text-justify text-decoration-none"
+                   href="{{ url }}">{{ latest_product.title }}</a>
+                <span class="tovar_price p-3  badge-secondary">{{ latest_product.price | three_digits_currency }}</span>
+            </div>
+        </div><!-- //TOVAR -->
+    </li>

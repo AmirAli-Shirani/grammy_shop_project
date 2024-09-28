@@ -1,0 +1,32 @@
+{% load poll_extras %}
+{% load thumbnail %}
+<div class="tovar_wrapper col-lg-4 col-md-4 col-sm-6 col-xs-6 col-ss-12 padbot40 border rounded">
+    <div class="tovar_item clearfix">
+        <div class="tovar_img border rounded">
+            <div class="tovar_img_wrapper border rounded"
+                 style="height: 302px;">
+                {% thumbnail product.image "270x370" as im %}
+                    <img src="{{ im.url }}" alt=""
+                         class="img-fluid img rounded pt-3">
+                {% endthumbnail %}
+            </div>
+            <div class="tovar_item_btns">
+                <div class=""><a
+                        class="open-project tovar_view text-decoration-none"
+                        href="{{ url }}">جزییات محصول</a></div>
+            </div>
+        </div>
+        <div class="tovar_description clearfix">
+            <a class="tovar_title text-justify h3 text-decoration-none"
+               href="{{ url }}">{{ product.title }}
+                کد : {{ product.id }}</a>
+            <span class="tovar_price h3  badge-pill badge-primary">{{ product.price | three_digits_currency }} </span>
+        </div>
+        <div class="tovar_content">What makes our cashmere so special? We start
+            with the
+            finest yarns from an Italian mill known for producing some of the
+            softest
+            cashmere out there.
+        </div>
+    </div>
+</div>

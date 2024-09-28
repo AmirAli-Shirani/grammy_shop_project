@@ -1,0 +1,84 @@
+{% extends 'shared/master.html' %}
+{% load thumbnail %}
+{% block title %}
+    کاتالوگ محصولات
+{% endblock %}
+{% block content %}
+    <section class="page_header">
+        <!-- CONTAINER -->
+        <div class="container">
+            <h3 class="pull-left font-weight-bold">لیست دسته بندی محصولات</h3>
+        </div><!-- //CONTAINER -->
+    </section>
+    <section class="product_catalog_block">
+        <!-- CONTAINER -->
+        <div class="container">
+            <!-- ROW -->
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 col-ss-12 product_catalog_item clearfix">
+                    {% thumbnail women_picture.image "270x370" crop="center" as im %}
+                        <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt=""
+                             class="rounded img-fluid thumbnail">
+                    {% endthumbnail %}
+                    <p class="product_catalog_title padbot10 title">پوشاک بانوان</p>
+                    <ul class="">
+                        {% for woman in categories_women_gender %}
+                            <li class=""><a class="text-decoration-none"
+                                    href="{% url 'products_by_categories' gender=woman.gender.url_title  category=woman.url_title %}">
+                                <p class="h4 text-dark py-2">{{ woman.title }}</p></a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 col-ss-12 product_catalog_item clearfix">
+                    {% thumbnail men_picture.image "270x370" crop="center" as im %}
+                        <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt=""
+                             class="rounded img-fluid thumbnail">
+                    {% endthumbnail %}
+                    <p class="product_catalog_title padbot10 title">پوشاک آقایان</p>
+
+                    <ul class="">
+                        {% for man in categories_men_gender %}
+                            <li class=""><a class="text-decoration-none"
+                                    href="{% url 'products_by_categories' gender=man.gender.url_title  category=man.url_title %}">
+                                <p class="h4 text-dark py-2">{{ man.title }}</p></a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div><!-- //ROW -->
+        </div><!-- //CONTAINER -->
+    </section>
+    <section class="product_catalog_block last">
+        <!-- CONTAINER -->
+        <div class="container">
+            <!-- ROW -->
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 col-ss-12 product_catalog_item clearfix">
+                    <img src="/static/images/women_catalog/women_cat.jfif" id="woman_caltalog_pic" alt=""
+                         class="rounded img-fluid thumbnail">
+                    <p class="product_catalog_title padbot10 title">کفش زنانه</p>
+
+                    <ul class="">
+                        {% for woman in shoes_categories_women %}
+                            <li class=""><a class="text-decoration-none"
+                                    href="{% url 'products_by_categories' gender=woman.gender.url_title category=woman.url_title %}">
+                                <p class="h4 text-dark py-2">{{ woman.title }}</p></a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 col-ss-12 product_catalog_item clearfix">
+                    <img src="/static/images/women_catalog/men-catalog.jfif" id="woman_caltalog_pic" alt=""
+                         class="rounded img-fluid thumbnail">
+                    <p class="product_catalog_title padbot10 title">کفش مردانه</p>
+
+                    <ul class="">
+                        {% for man in shoes_categories_men %}
+                            <li class=""><a class="text-decoration-none"
+                                    href="{% url 'products_by_categories' gender=man.gender.url_title  category=man.url_title %}">
+                                <p class="h4 text-dark py-2">{{ man.title }}</p></a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div><!-- //ROW -->
+        </div><!-- //CONTAINER -->
+    </section>
+{% endblock %}

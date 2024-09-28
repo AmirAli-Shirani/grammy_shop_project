@@ -1,0 +1,101 @@
+{% extends 'shared/master.html' %}
+{% load thumbnail %}
+{% block title %}
+    درباره ما
+{% endblock %}
+{% block content %}
+    <section class="page_header">
+        <!-- CONTAINER -->
+        <div class="container">
+            <h3 class="pull-left"><b>درباره ما</b></h3>
+            <div class="pull-right">
+                <a href="{% url 'product_catalog_page' %}">بازگشت به فروشگاه<i class="fa fa-angle-right"></i></a>
+            </div>
+        </div><!-- //CONTAINER -->
+    </section>
+    <section class="about_us_info">
+
+        <!-- CONTAINER -->
+        <div class="container">
+
+            <!-- ROW -->
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 padbot60 about_us_description animated fadeInLeft"
+                     data-appear-top-offset="-100" data-animated="fadeInLeft">
+                    <p>ما توسعه‌دهندگان جنگو را با تم‌های طراحی‌محور و تجربه‌ای درجه یک که مشتریان آن‌ها دوست خواهند
+                        داشت، تقویت می‌کنیم</p>
+                    <span>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم
+                        از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون
+                        و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود
+                        ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه
+                        و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص
+                        طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام
+                        و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی
+                        دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.</span>
+
+                </div>
+
+                <div class="col-lg-6 col-md-6 col-sm-6 padbot30 animated fadeInRight" data-appear-top-offset="-100"
+                     data-animated="fadeInRight">
+                    <img class="about_img1 " src="/static/images/about-us-developer/ELEGANT-STYLE-11.jpg" alt="">
+                </div>
+            </div><!-- //ROW -->
+
+            <!-- ROW -->
+            <div class="row services_wrapper padbot40 animated fadeInUp" data-appear-top-offset="-100"
+                 data-animated="fadeInUp">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 col-ss-12 padbot30">
+                    <div class="service_item">
+                        <div class="clearfix"><i class="fa fa-tablet"></i>
+                            <p>تم های واکنشگرا</p></div>
+                        <span>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است</span>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 col-ss-12 padbot30">
+                    <div class="service_item">
+                        <div class="clearfix"><i class="fa fa-comments-o"></i>
+                            <p>حمایت رایگان</p></div>
+                        <span>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است</span>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 col-ss-12 padbot30">
+                    <div class="service_item">
+                        <div class="clearfix"><i class="fa fa-eye"></i>
+                            <p>شبکیه چشم آماده است</p></div>
+                        <span>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است</span>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 col-ss-12 padbot30">
+                    <div class="service_item">
+                        <div class="clearfix"><i class="fa fa-cogs"></i>
+                            <p>سفارشی کردن آسان</p></div>
+                        <span>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است</span>
+                    </div>
+                </div>
+            </div><!-- //ROW -->
+
+
+            <!-- ROW -->
+            <div class="row team_wrapper padbot60 animated fadeInUp" data-appear-top-offset="-100"
+                 data-animated="fadeInUp">
+                <div class="col-lg-3 col-lg-offset-4 col-md-offset-4 col-md-3 col-sm-offset-4 col-sm-6 col-xs-6 col-ss-12 padbot30">
+                    <div class="team_item center">
+                        <img src="/static/images/about-us-developer/20230322_103148.jpg" id="about_me" class="rounded-circle rounded" alt="about_developer">
+                        <p>امیرعلی شیرانی</p>
+                        <span class="font-weight-bold">برنامه نویس</span>
+                        <div class="team_social">
+                            <a href="javascript:void(0);"><i class="fa fa-facebook"></i></a>
+                            <a href="javascript:void(0);"><i class="fa fa-twitter"></i></a>
+                            <a href="javascript:void(0);"><i class="fa fa-linkedin"></i></a>
+                            <a href="javascript:void(0);"><i class="fa fa-google-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- //ROW -->
+        </div><!-- //CONTAINER -->
+    </section>
+{% endblock %}
